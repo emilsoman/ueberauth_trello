@@ -1,8 +1,8 @@
 defmodule UeberauthTrello.Mixfile do
   use Mix.Project
 
-  @version "0.2.4"
-  @url "https://github.com/ueberauth/ueberauth_trello"
+  @version "0.1.0"
+  @url "https://github.com/wm/ueberauth_trello"
 
   def project do
     [app: :ueberauth_trello,
@@ -51,7 +51,7 @@ defmodule UeberauthTrello.Mixfile do
 
   defp package do
     [files: ["lib", "mix.exs", "README.md", "LICENSE"],
-     maintainers: ["Sean Callan"],
+     maintainers: ["Will Mernagh"],
      licenses: ["MIT"],
      links: %{"GitHub": @url}]
   end
