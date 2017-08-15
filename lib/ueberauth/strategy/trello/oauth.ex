@@ -1,21 +1,21 @@
-defmodule Ueberauth.Strategy.Twitter.OAuth do
+defmodule Ueberauth.Strategy.Trello.OAuth do
   @moduledoc """
-  OAuth1 for Twitter.
+  OAuth1 for Trello.
 
   Add `consumer_key` and `consumer_secret` to your configuration:
 
-  config :ueberauth, Ueberauth.Strategy.Twitter.OAuth,
-    consumer_key: System.get_env("TWITTER_CONSUMER_KEY"),
-    consumer_secret: System.get_env("TWITTER_CONSUMER_SECRET"),
-    redirect_uri: System.get_env("TWITTER_REDIRECT_URI")
+  config :ueberauth, Ueberauth.Strategy.Trello.OAuth,
+    consumer_key: System.get_env("TRELLO_CONSUMER_KEY"),
+    consumer_secret: System.get_env("TRELLO_CONSUMER_SECRET"),
+    redirect_uri: System.get_env("TRELLO_REDIRECT_URI")
   """
 
-  alias Ueberauth.Strategy.Twitter.OAuth.Internal
+  alias Ueberauth.Strategy.Trello.OAuth.Internal
 
-  @defaults [access_token: "/oauth/access_token",
-             authorize_url: "/oauth/authorize",
-             request_token: "/oauth/request_token",
-             site: "https://api.twitter.com"]
+  @defaults [access_token: "/1/OAuthGetAccessToken",
+             authorize_url: "/1/OAuthAuthorizeToken",
+             request_token: "/1/OAuthGetRequestToken",
+             site: "https://trello.com"]
 
   def access_token({token, token_secret}, verifier, opts \\ []) do
     opts
@@ -79,6 +79,9 @@ defmodule Ueberauth.Strategy.Twitter.OAuth do
     token_secret = Internal.token_secret(params)
 
     {:ok, {token, token_secret}}
+  end
+  defp decode_response({:ok, %{status_code: status_code, body: body, headers: _}}) do
+    {:error, "#{status_code}: #{body}"}
   end
   defp decode_response({:ok, %{status_code: status_code, body: _, headers: _}}) do
     {:error, "#{status_code}"}

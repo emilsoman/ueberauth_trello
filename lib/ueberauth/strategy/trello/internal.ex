@@ -1,4 +1,4 @@
-defmodule Ueberauth.Strategy.Twitter.OAuth.Internal do
+defmodule Ueberauth.Strategy.Trello.OAuth.Internal do
   @moduledoc """
   A layer to handle OAuth signing, etc.
   """

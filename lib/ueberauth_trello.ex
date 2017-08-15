@@ -1,3 +1,3 @@
-defmodule UeberauthTwitter do
+defmodule UeberauthTrello do
   @moduledoc false
 end
