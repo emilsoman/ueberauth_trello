@@ -104,6 +104,7 @@ defmodule Ueberauth.Strategy.Trello do
       {:ok, %{status_code: 401, body: _, headers: _}} ->
         set_errors!(conn, [error("token", "unauthorized")])
       {:ok, %{status_code: status_code, body: body, headers: _}} when status_code in 200..399 ->
+        IO.puts body
         body = Poison.decode!(body)
 
         conn
