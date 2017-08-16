@@ -15,7 +15,7 @@ defmodule Ueberauth.Strategy.Trello do
   """
   def handle_request!(conn) do
     token = Trello.OAuth.request_token!([], [redirect_uri: callback_url(conn)])
-    IO.puts "handle_request! TOKEN: #{token}"
+    IO.puts "handle_request! TOKEN: #{inspect token}"
 
     conn
     |> put_session(:trello_token, token)
@@ -27,7 +27,7 @@ defmodule Ueberauth.Strategy.Trello do
   """
   def handle_callback!(%Plug.Conn{params: %{"oauth_verifier" => oauth_verifier}} = conn) do
     token = get_session(conn, :trello_token)
-    IO.puts "handle_callback! TOKEN: #{token}"
+    IO.puts "handle_callback! TOKEN: #{inspect token}"
     case Trello.OAuth.access_token(token, oauth_verifier) do
       {:ok, access_token} -> fetch_user(conn, access_token)
       {:error, error} -> set_errors!(conn, [error(error.code, error.reason)])
@@ -63,7 +63,7 @@ defmodule Ueberauth.Strategy.Trello do
   """
   def credentials(conn) do
     {token, secret} = conn.private.trello_token
-    IO.puts "credentials: #{token}, #{secret}"
+    IO.puts "credentials: #{inspect token}, #{inspect secret}"
 
     %Credentials{token: token, secret: secret}
   end
