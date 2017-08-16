@@ -41,6 +41,8 @@ _Note_: Cloned from Überauth Twitter
     config :ueberauth, Ueberauth.Strategy.Trello.OAuth,
       consumer_key: System.get_env("TRELLO_CONSUMER_KEY"),
       consumer_secret: System.get_env("TRELLO_CONSUMER_SECRET")
+      name: "My App"
+
     ```
 
 1.  Include the Überauth plug in your controller:
