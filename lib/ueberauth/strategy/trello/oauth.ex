@@ -39,9 +39,10 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
   end
 
   def authorize_url!({token, _token_secret}, opts \\ []) do
+    IO.puts inspect(opts)
     opts
     |> client
-    |> to_url(:authorize_url, %{"oauth_token" => token, "name" => "UeberauthTrello"})
+    |> to_url(:authorize_url, %{"oauth_token" => token})
   end
 
   def client(opts \\ []) do
