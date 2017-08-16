@@ -73,12 +73,12 @@ defmodule Ueberauth.Strategy.Trello do
 
     %Info{
       email: user["email"],
-      image: user["profile_image_url"],
-      name: user["name"],
-      nickname: user["screen_name"],
+      image: "http://www.gravatar.com/avatar/#{user["gravatarHash"]}.jpg",
+      name: user["fullName"],
+      nickname: user["username"],
       description: user["description"],
       urls: %{
-        Trello: "https://trello.com/#{user["screen_name"]}",
+        Trello: "https://trello.com/#{user["username"]}",
         Website: user["url"]
       }
     }

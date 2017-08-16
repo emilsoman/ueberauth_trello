@@ -15,7 +15,7 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
   @defaults [access_token: "/1/OAuthGetAccessToken",
              authorize_url: "/1/OAuthAuthorizeToken",
              request_token: "/1/OAuthGetRequestToken",
-             site: "https://trello.com"]
+             site: "https://api.trello.com"]
 
   def access_token({token, token_secret}, verifier, opts \\ []) do
     opts
