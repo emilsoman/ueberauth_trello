@@ -8,6 +8,7 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
     consumer_key: System.get_env("TRELLO_CONSUMER_KEY"),
     consumer_secret: System.get_env("TRELLO_CONSUMER_SECRET"),
     redirect_uri: System.get_env("TRELLO_REDIRECT_URI")
+    name: "My App"
   """
 
   alias Ueberauth.Strategy.Trello.OAuth.Internal
@@ -32,17 +33,11 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
     end
   end
 
-  def authorize_url!({token, _token_secret}, ["name": name] = opts) do
+  def authorize_url!({token, _token_secret}, opts \\ []) do
+    name = client.name || "Set \"name\" in config :ueberauth, Ueberauth.Strategy.Trello.OAuth"
     opts
     |> client
     |> to_url(:authorize_url, %{"oauth_token" => token, "name" => name})
-  end
-
-  def authorize_url!({token, _token_secret}, opts \\ []) do
-    IO.puts inspect(opts)
-    opts
-    |> client
-    |> to_url(:authorize_url, %{"oauth_token" => token})
   end
 
   def client(opts \\ []) do
