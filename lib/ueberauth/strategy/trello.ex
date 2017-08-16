@@ -103,7 +103,6 @@ defmodule Ueberauth.Strategy.Trello do
 
   defp fetch_user(conn, token) do
     params = []
-    # params = [{"include_entities", false}, {"skip_status", true}, {"include_email", true}]
     case Trello.OAuth.get("/1/members/me", params, token) do
       {:ok, %{status_code: 401, body: _, headers: _}} ->
         set_errors!(conn, [error("token", "unauthorized")])
