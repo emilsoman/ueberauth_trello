@@ -32,10 +32,16 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
     end
   end
 
+  def authorize_url!({token, _token_secret}, ["name": name] = opts) do
+    opts
+    |> client
+    |> to_url(:authorize_url, %{"oauth_token" => token, "name" => name})
+  end
+
   def authorize_url!({token, _token_secret}, opts \\ []) do
     opts
     |> client
-    |> to_url(:authorize_url, %{"oauth_token" => token})
+    |> to_url(:authorize_url, %{"oauth_token" => token, "name" => "UeberauthTrello"})
   end
 
   def client(opts \\ []) do
