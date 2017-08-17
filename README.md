@@ -42,6 +42,7 @@ _Note_: Cloned from Überauth Twitter
       consumer_key: System.get_env("TRELLO_CONSUMER_KEY"),
       consumer_secret: System.get_env("TRELLO_CONSUMER_SECRET")
       name: "My App"
+      scope: "read,account"
 
     ```
 
