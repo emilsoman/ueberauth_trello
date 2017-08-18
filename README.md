@@ -13,7 +13,7 @@ _Note_: Cloned from Überauth Twitter
 
     ```elixir
     def deps do
-      [{:ueberauth_trello, "~> 0.2"},
+      [{:ueberauth_trello, "~> 0.1"},
        {:oauth, github: "tim/erlang-oauth"}]
     end
     ```
