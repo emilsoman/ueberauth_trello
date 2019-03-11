@@ -37,9 +37,10 @@ defmodule Ueberauth.Strategy.Trello.OAuth do
   def authorize_url!({token, _token_secret}, opts \\ []) do
     name = if Map.has_key?(client, :name), do: client.name, else: "Set \"name\" in config :ueberauth, Ueberauth.Strategy.Trello.OAuth"
     scope = if Map.has_key?(client, :scope), do: client.scope, else: "read,account"
+    expiration = if Map.has_key?(client, :expiration), do: client.expiration, else: "30days"
     opts
     |> client
-    |> to_url(:authorize_url, %{"oauth_token" => token, "name" => name, "scope" => scope})
+    |> to_url(:authorize_url, %{"oauth_token" => token, "name" => name, "scope" => scope, "expiration" => expiration})
   end
 
   def client(opts \\ []) do

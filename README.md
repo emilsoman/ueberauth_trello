@@ -4,6 +4,7 @@
 
 _Note_: Sessions are required for this strategy.
 _Note_: Cloned from Überauth Twitter
+_Note_: Cloned from https://github.com/wm/ueberauth_trello
 
 ## Installation
 
