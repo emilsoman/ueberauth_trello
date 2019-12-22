@@ -2,7 +2,7 @@ defmodule UeberauthTrello.Mixfile do
   use Mix.Project
 
   @version "0.1.0"
-  @url "https://github.com/wm/ueberauth_trello"
+  @url "https://github.com/emilsoman/ueberauth_trello"
 
   def project do
     [app: :ueberauth_trello,
@@ -25,15 +25,14 @@ defmodule UeberauthTrello.Mixfile do
 
   defp deps do
     [
-     {:httpoison, "~> 0.7"},
+     {:httpoison, "~> 1.0"},
      {:oauther, "~> 1.1"},
-     {:poison, "~> 1.3 or ~> 3.0"},
-     {:ueberauth, "~> 0.2"},
+     {:ueberauth, "~> 0.6"},
 
      # dev/test dependencies
      {:earmark, ">= 0.0.0", only: :dev},
-     {:ex_doc, "~> 0.1", only: :dev},
-     {:credo, "~> 0.5", only: [:dev, :test]}
+     {:ex_doc, "~> 0.18", only: :dev},
+     {:credo, "~> 0.8", only: [:dev, :test]}
     ]
   end
 
@@ -51,7 +50,7 @@ defmodule UeberauthTrello.Mixfile do
 
   defp package do
     [files: ["lib", "mix.exs", "README.md", "LICENSE"],
-     maintainers: ["Will Mernagh"],
+     maintainers: ["Emil Soman"],
      licenses: ["MIT"],
      links: %{"GitHub": @url}]
   end
